@@ -1,0 +1,26 @@
+# Sample Authentication Log for FORENSIX Anomaly Analysis
+# Format: timestamp | user | event | ip
+2026-09-16 09:15:22 | john | SUCCESS_LOGIN | 192.168.1.10
+2026-09-16 09:20:45 | alice | SUCCESS_LOGIN | 192.168.1.12
+2026-09-16 10:02:11 | bob | SUCCESS_LOGIN | 192.168.1.15
+2026-09-16 11:30:00 | john | LOGOUT | 192.168.1.10
+# Seeded Anomaly 1: Brute force burst (6 failed logins in 90 seconds from 192.168.1.105)
+2026-09-16 11:45:01 | debra | FAILED_LOGIN | 192.168.1.105
+2026-09-16 11:45:15 | debra | FAILED_LOGIN | 192.168.1.105
+2026-09-16 11:45:32 | debra | FAILED_LOGIN | 192.168.1.105
+2026-09-16 11:45:50 | debra | FAILED_LOGIN | 192.168.1.105
+2026-09-16 11:46:12 | debra | FAILED_LOGIN | 192.168.1.105
+2026-09-16 11:46:28 | debra | FAILED_LOGIN | 192.168.1.105
+# Normal traffic resumed
+2026-09-16 13:10:05 | alice | LOGOUT | 192.168.1.12
+2026-09-16 14:00:19 | bob | SUCCESS_LOGIN | 192.168.1.15
+# Seeded Anomaly 3: Threat intelligence blacklisted IP attempt
+2026-09-16 15:22:40 | attacker | FAILED_LOGIN | 198.51.100.23
+# Seeded Anomaly 4: High-privilege suspicious username probe
+2026-09-16 16:40:02 | root | FAILED_LOGIN | 10.0.0.99
+# Malformed lines to test parser fault tolerance
+INVALID_GARBAGE_LOG_LINE_WITH_NO_PIPES
+2026-09-16 17:01:00 | incomplete_line
+# Seeded Anomaly 2: Off-hours access (03:15 AM, outside 08:00 - 19:00)
+2026-09-17 03:15:22 | nightwatch | SUCCESS_LOGIN | 192.168.1.55
+2026-09-17 08:30:10 | manager | SUCCESS_LOGIN | 192.168.1.2
