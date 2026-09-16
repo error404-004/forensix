@@ -1,0 +1,33 @@
+# Maven build output
+target/
+dependency-reduced-pom.xml
+
+# Database files (runtime generated)
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Application logs
+*.log
+forensix.log*
+
+# Test directories and runtime artifacts
+test-dir/
+temp-test/
+reports/scan-report*
+
+# IDE settings
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated
+Thumbs.db
+Desktop.ini
+.DS_Store
