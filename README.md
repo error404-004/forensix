@@ -190,7 +190,7 @@ forensix/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/forensix.git
+git clone https://github.com/error404-004/forensix.git
 cd forensix
 ```
 
