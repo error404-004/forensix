@@ -45,8 +45,15 @@ public class ServiceContext {
     private final ScanScheduler scanScheduler;
 
     public ServiceContext() {
+        this(null);
+    }
+
+    public ServiceContext(String customDbPath) {
         this.configLoader = new ConfigLoader();
         this.config = configLoader.loadConfig();
+        if (customDbPath != null && !customDbPath.isBlank()) {
+            this.config.setDatabasePath(customDbPath);
+        }
 
         this.dbManager = new DatabaseManager(config.getDatabasePath());
         this.dbManager.initSchema();
